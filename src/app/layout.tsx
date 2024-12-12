@@ -1,10 +1,5 @@
 import "./globals.css";
 
-import { faker } from "@faker-js/faker";
-
-const randomName = faker.person.fullName();
-const randomEmail = faker.internet.email();
-
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -12,11 +7,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>
-        {children}
-        {randomEmail}
-        {randomName}
-      </body>
+      <body>{children}</body>
     </html>
   );
 }
