@@ -12,9 +12,13 @@ sync_with_github:
     # Ajouter le dépôt GitHub comme remote
     - git remote add github https://github.com/nca-49/faker-ui.git
 
+    # Assurez-vous que la branche actuelle est à jour
+    - git fetch origin
+    - git checkout main
+
   script:
     # Pousser les changements vers GitHub
-    - git push github
+    - git push github main
 
   only:
     - branches
