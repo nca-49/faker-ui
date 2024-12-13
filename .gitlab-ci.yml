@@ -6,7 +6,7 @@ sync_with_github:
   image: alpine:latest
   before_script:
     - apk add --no-cache git
-    - git config --global user.name "nca-49"
+    - git config --global user.name "VladShining"
     - git config --global user.email "vladshining@gmail.com"
 
     # Ajouter le dépôt GitHub comme remote
