@@ -12,16 +12,14 @@ const Root = () => {
   const [data, setData] = useState<RandomData | null>(null);
   const [copied, setCopied] = useState(false);
 
-  // Fonction pour récupérer une donnée aléatoire
   const fetchRandomData = async () => {
     const res = await fetch("/api");
     const result = await res.json();
     const randomItem = result[Math.floor(Math.random() * result.length)];
     setData(randomItem);
-    setCopied(false); // Réinitialise l'état de copie
+    setCopied(false);
   };
 
-  // Fonction pour copier les données dans le presse-papiers
   const copyToClipboard = () => {
     if (data) {
       const text = `Nom: ${data.name}\nEmail: ${data.email}\nAdresse: ${data.address}`;
