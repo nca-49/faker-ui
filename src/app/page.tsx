@@ -8,7 +8,7 @@ type RandomData = {
   address: string;
 };
 
-const Home = () => {
+const Root = () => {
   const [data, setData] = useState<RandomData | null>(null);
   const [copied, setCopied] = useState(false);
 
@@ -84,4 +84,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Root;

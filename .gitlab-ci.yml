@@ -6,8 +6,8 @@ sync_with_github:
   image: alpine:latest
   before_script:
     - apk add --no-cache git
-    # - git config --global user.name "GitLab CI"
-    # - git config --global user.email "ci@example.com"
+    - git config --global user.name "GitLab CI"
+    - git config --global user.email "ci@example.com"
 
     # Ajouter le dépôt GitHub comme remote
     - git remote add github https://github.com/nca-49/faker-ui.git
