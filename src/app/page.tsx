@@ -1,5 +1,8 @@
 "use client";
 import { useState } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
 
 type RandomData = {
   id: string;
@@ -33,51 +36,68 @@ const Root = () => {
   };
 
   return (
-    <div style={{ textAlign: "center", marginTop: "50px" }}>
-      <h1>Donnée Aléatoire</h1>
-      <button
-        onClick={fetchRandomData}
-        style={{
-          padding: "10px 20px",
-          backgroundColor: "#0070f3",
-          color: "#fff",
-          border: "none",
-          borderRadius: "5px",
-          cursor: "pointer",
-          margin: "10px",
-        }}
-      >
-        Générer une donnée
-      </button>
+    <div className="rootStyle">
+      <div className="section">
+        <h1>Welcome to Kepler</h1>
+        <p>Generate data based on Faker for testing and development.</p>
+        <Button>
+          <Link href={"/home"}>Explore</Link>
+        </Button>
+      </div>
+      <div className="section">
+        <Image
+          src="/assets/images/Asset1.svg"
+          fill
+          alt="space"
+          priority={true}
+        />
+      </div>
+      <div className="section">
+        <Button
+          onClick={fetchRandomData}
+          style={{
+            padding: "10px 20px",
+            backgroundColor: "#0070f3",
+            color: "#fff",
+            border: "none",
+            borderRadius: "5px",
+            cursor: "pointer",
+            margin: "10px",
+          }}
+        >
+          Générer une donnée
+        </Button>
+        <p>
+          {data && (
+            <div style={{ marginTop: "20px" }}>
+              <p>
+                <strong>Nom :</strong> {data.name}
+              </p>
+              <p>
+                <strong>Email :</strong> {data.email}
+              </p>
+              <p>
+                <strong>Adresse :</strong> {data.address}
+              </p>
 
-      {data && (
-        <div style={{ marginTop: "20px" }}>
-          <p>
-            <strong>Nom :</strong> {data.name}
-          </p>
-          <p>
-            <strong>Email :</strong> {data.email}
-          </p>
-          <p>
-            <strong>Adresse :</strong> {data.address}
-          </p>
-
-          <button
-            onClick={copyToClipboard}
-            style={{
-              padding: "10px 20px",
-              backgroundColor: copied ? "#28a745" : "#0070f3",
-              color: "#fff",
-              border: "none",
-              borderRadius: "5px",
-              cursor: "pointer",
-              marginTop: "10px",
-            }}
-          >
-            {copied ? "Copié !" : "Copier dans le presse-papiers"}
-          </button>
-        </div>
-      )}
+              <Button
+                onClick={copyToClipboard}
+                style={{
+                  padding: "10px 20px",
+                  backgroundColor: copied ? "#28a745" : "#0070f3",
+                  color: "#fff",
+                  border: "none",
+                  borderRadius: "5px",
+                  cursor: "pointer",
+                  marginTop: "10px",
+                }}
+              >
+                {copied ? "Copié !" : "Copier dans le presse-papiers"}
+              </Button>
+            </div>
+          )}
+        </p>
+      </div>
     </div>
   );
 };
