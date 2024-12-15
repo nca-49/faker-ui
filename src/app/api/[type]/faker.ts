@@ -1,7 +1,7 @@
 import { faker } from "@faker-js/faker";
 
-export function person() {
-  return Array.from({ length: 10 }).map(() => ({
+export function person(_length: number = 1) {
+  return Array.from({ length: _length }).map(() => ({
     bio: faker.person.bio(),
     firstName: faker.person.firstName(),
     lastName: faker.person.lastName(),
@@ -20,8 +20,8 @@ export function person() {
   }));
 }
 
-export function lorem() {
-  return Array.from({ length: 10 }).map(() => ({
+export function lorem(_length: number = 1) {
+  return Array.from({ length: _length }).map(() => ({
     lines: faker.lorem.lines(),
     paragraph: faker.lorem.paragraph(),
     paragraphs: faker.lorem.paragraphs(),
@@ -34,8 +34,8 @@ export function lorem() {
   }));
 }
 
-export function music() {
-  return Array.from({ length: 10 }).map(() => ({
+export function music(_length: number = 1) {
+  return Array.from({ length: _length }).map(() => ({
     album: faker.music.album(),
     artist: faker.music.artist(),
     genre: faker.music.genre(),
@@ -43,8 +43,8 @@ export function music() {
   }));
 }
 
-export function number() {
-  return Array.from({ length: 10 }).map(() => ({
+export function number(_length: number = 1) {
+  return Array.from({ length: _length }).map(() => ({
     bigInt: faker.number.bigInt(),
     binary: faker.number.binary(),
     float: faker.number.float(),
@@ -55,22 +55,22 @@ export function number() {
   }));
 }
 
-export function phone() {
-  return Array.from({ length: 10 }).map(() => ({
+export function phone(_length: number = 1) {
+  return Array.from({ length: _length }).map(() => ({
     imei: faker.phone.imei(),
     number: faker.phone.number(),
   }));
 }
 
-export function science() {
-  return Array.from({ length: 10 }).map(() => ({
+export function science(_length: number = 1) {
+  return Array.from({ length: _length }).map(() => ({
     element: faker.science.chemicalElement(),
     unit: faker.science.unit(),
   }));
 }
 
-export function string() {
-  return Array.from({ length: 10 }).map(() => ({
+export function string(_length: number = 1) {
+  return Array.from({ length: _length }).map(() => ({
     alpha: faker.string.alpha(),
     alphaNum: faker.string.alphanumeric(),
     binary: faker.string.binary(),
@@ -86,22 +86,22 @@ export function string() {
   }));
 }
 
-export function date() {
-  return Array.from({ length: 10 }).map(() => ({
+export function date(_length: number = 1) {
+  return Array.from({ length: _length }).map(() => ({
     anytime: faker.date.anytime(),
     past: faker.date.past(),
   }));
 }
 
-export function timestamp() {
-  return Array.from({ length: 10 }).map(() => ({
+export function timestamp(_length: number = 1) {
+  return Array.from({ length: _length }).map(() => ({
     id: faker.string.uuid(),
     timestamp: faker.date.recent().toISOString(),
   }));
 }
 
-export function coordinate() {
-  return Array.from({ length: 10 }).map(() => ({
+export function coordinate(_length: number = 1) {
+  return Array.from({ length: _length }).map(() => ({
     id: faker.string.uuid(),
     latitude: faker.location.latitude(),
     longitude: faker.location.longitude(),

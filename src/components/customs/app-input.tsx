@@ -36,6 +36,11 @@ export function AppInput({
         );
     }
   };
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setData(e.target.value);
+  };
+
   return (
     <div className="elementor flex w-full items-center space-x-2 mb-4">
       <Label> {dataType.toLowerCase()}</Label>
@@ -44,6 +49,7 @@ export function AppInput({
         type="text"
         placeholder="text"
         value={data ? data[dataType] : ""}
+        onChange={handleInputChange}
       />
       <Button variant="ghost" onClick={fetchRandomData}>
         Regenerate

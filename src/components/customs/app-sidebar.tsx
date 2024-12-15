@@ -22,11 +22,11 @@ const data = {
       items: [
         {
           title: "name",
-          url: "#person",
+          url: "/home",
         },
         {
           title: "first name",
-          url: "#person",
+          url: "/home/user",
         },
       ],
     },
