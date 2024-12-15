@@ -5,10 +5,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 
 type RandomData = {
-  id: string;
-  name: string;
-  email: string;
-  address: string;
+  firstName: string;
 };
 
 const Root = () => {
@@ -16,7 +13,7 @@ const Root = () => {
   const [copied, setCopied] = useState(false);
 
   const fetchRandomData = async () => {
-    const res = await fetch("/api");
+    const res = await fetch("/api/person");
     const result = await res.json();
     const randomItem = result[Math.floor(Math.random() * result.length)];
     setData(randomItem);
@@ -25,7 +22,7 @@ const Root = () => {
 
   const copyToClipboard = () => {
     if (data) {
-      const text = `Nom: ${data.name}\nEmail: ${data.email}\nAdresse: ${data.address}`;
+      const text = `Nom: ${data.firstName}`;
       navigator.clipboard
         .writeText(text)
         .then(() => setCopied(true))
@@ -71,13 +68,7 @@ const Root = () => {
           {data && (
             <div style={{ marginTop: "20px" }}>
               <p>
-                <strong>Nom :</strong> {data.name}
-              </p>
-              <p>
-                <strong>Email :</strong> {data.email}
-              </p>
-              <p>
-                <strong>Adresse :</strong> {data.address}
+                <strong>Nom :</strong> {data.firstName}
               </p>
 
               <Button

@@ -1,0 +1,27 @@
+.home {
+  background: linear-gradient(
+    to bottom left,
+    #040609,
+    #1a2230,
+    #300621,
+    #212c3d
+  );
+}
+.home header {
+  background: #1a2230;
+}
+
+.wrapper {
+  background: linear-gradient(
+    to bottom left,
+    #040609,
+    #1a2230,
+    #300621,
+    #212c3d
+  ) !important;
+}
+.home label {
+  text-transform: capitalize;
+  letter-spacing: 0.1em;
+  color: #92abcd;
+}
