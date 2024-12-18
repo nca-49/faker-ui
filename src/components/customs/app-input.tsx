@@ -9,18 +9,21 @@ import { useRef, useState } from "react";
 export function AppInput({
   dataClass = "person",
   dataType = "bio",
+  length = 1,
 }: {
   dataClass?: string;
   dataType?: string;
+  length?: number;
 }) {
   const [data, setData] = useState<any>(null);
   const [copied, setCopied] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
 
   const fetchRandomData = async () => {
-    const res = await fetch(`/api/${dataClass}`);
-    const result = await res.json();
-    const randomItem = result[Math.floor(Math.random() * result.length)];
+    const resultat = await fetch(`/api/${dataClass}?length=${length}`);
+    const resultatJson = await resultat.json();
+    const randomItem =
+      resultatJson[Math.floor(Math.random() * resultatJson.length)];
     setData(randomItem);
     setCopied(false);
   };

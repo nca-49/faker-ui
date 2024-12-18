@@ -10,7 +10,7 @@ export default function Home() {
           <div className="aspect-video rounded-xl bg-muted/50 p-6">
             <h2 className="m-2 mb-2">Custom Data</h2>
             <hr className="mb-4" />
-            <AppInput dataClass="person" dataType="firstName" />
+            <AppInput dataClass="person" dataType="firstName" length={8} />
             <AppInput dataClass="person" dataType="lastName" />
             <AppInput dataClass="person" dataType="middleName" />
             <AppInput dataClass="person" dataType="fullName" />

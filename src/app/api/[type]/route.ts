@@ -1,42 +1,34 @@
 import { NextResponse } from "next/server";
 import { number, person, lorem, music, phone, science, string } from "./faker";
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const apiFunctions: { [key: string]: (length?: number) => any } = {
+  person,
+  lorem,
+  music,
+  number,
+  phone,
+  science,
+  string,
+};
+
 export async function GET(
   req: Request,
   { params }: { params: { type: string } }
 ) {
   const { type } = params;
+  const url = new URL(req.url);
+  const length = Number(url.searchParams.get("length")) || 1;
 
-  let data;
+  const apiFunction = apiFunctions[type];
 
-  switch (type) {
-    case "person":
-      data = person();
-      break;
-    case "lorem":
-      data = lorem();
-      break;
-    case "music":
-      data = music();
-      break;
-    case "number":
-      data = number();
-      break;
-    case "phone":
-      data = phone();
-      break;
-    case "science":
-      data = science();
-      break;
-    case "string":
-      data = string();
-      break;
-    default:
-      return NextResponse.json(
-        { error: "Invalid type parameter" },
-        { status: 400 }
-      );
+  if (!apiFunction) {
+    return NextResponse.json(
+      { error: "Invalid type parameter" },
+      { status: 400 }
+    );
   }
 
+  const data = apiFunction(length);
   return NextResponse.json(data);
 }
