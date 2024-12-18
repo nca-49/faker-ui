@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
+import { getOneData } from "@/lib/fakerFetch";
 // import { user } from "@/types/user";
 import { Button } from "../ui/button";
 import { Input } from "../ui/input";
@@ -9,7 +10,6 @@ import { useRef, useState } from "react";
 export function AppInput({
   dataClass = "person",
   dataType = "bio",
-  length = 1,
 }: {
   dataClass?: string;
   dataType?: string;
@@ -20,11 +20,10 @@ export function AppInput({
   const inputRef = useRef<HTMLInputElement>(null);
 
   const fetchRandomData = async () => {
-    const resultat = await fetch(`/api/${dataClass}?length=${length}`);
-    const resultatJson = await resultat.json();
-    const randomItem =
-      resultatJson[Math.floor(Math.random() * resultatJson.length)];
-    setData(randomItem);
+    // const randomItem =
+    //   resultatJson[Math.floor(Math.random() * resultatJson.length)];
+    const randomItem = await getOneData(dataClass);
+    setData(randomItem[0]);
     setCopied(false);
   };
 

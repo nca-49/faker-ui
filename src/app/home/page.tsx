@@ -1,3 +1,4 @@
+import { AppCard } from "@/components/customs/app-card";
 import { AppInput } from "@/components/customs/app-input";
 import { Button } from "@/components/ui/button";
 import { SidebarInset } from "@/components/ui/sidebar";
@@ -40,6 +41,7 @@ export default function Home() {
             <hr className="mb-4" />
             <Button>Reset All</Button>
           </div>
+          <AppCard _dataClass="person" _length={5} />
         </div>
         <div className="min-h-[100vh] flex-1 rounded-xl bg-muted/50 md:min-h-min" />
       </div>
