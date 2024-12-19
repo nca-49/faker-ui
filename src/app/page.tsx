@@ -37,9 +37,9 @@ const Root = () => {
       <div className="section">
         <h1>Welcome to Kepler</h1>
         <p>Generate data based on Faker for testing and development.</p>
-        <Button>
-          <Link href={"/home"}>Explore</Link>
-        </Button>
+        <Link href={"/home"}>
+          <Button>Explore</Button>
+        </Link>
       </div>
       <div className="section">
         <Image

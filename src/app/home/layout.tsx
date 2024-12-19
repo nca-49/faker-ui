@@ -11,7 +11,7 @@ export default function HomeLayout({
   return (
     <SidebarProvider>
       <AppSidebar />
-      <div className="home">
+      <div className="home w-full">
         <AppNavBar />
         {children}
       </div>

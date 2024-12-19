@@ -200,6 +200,39 @@ export function image(_length: number = 1) {
   }));
 }
 
+export function airline(_length: number = 1) {
+  return Array.from({ length: _length }).map(() => ({
+    aircraftType: faker.airline.aircraftType(),
+    airline: faker.airline.airline(),
+    airplane: faker.airline.airplane(),
+    airport: faker.airline.airport(),
+    flightNumber: faker.airline.flightNumber(),
+    recordLocator: faker.airline.recordLocator(),
+    seat: faker.airline.seat(),
+  }));
+}
+
+export function animal(_length: number = 1) {
+  return Array.from({ length: _length }).map(() => ({
+    bear: faker.animal.bear(),
+    bird: faker.animal.bird(),
+    cat: faker.animal.cat(),
+    cetacean: faker.animal.cetacean(),
+    cow: faker.animal.cow(),
+    crocodilia: faker.animal.crocodilia(),
+    dog: faker.animal.dog(),
+    fish: faker.animal.fish(),
+    horse: faker.animal.horse(),
+    insect: faker.animal.insect(),
+    lion: faker.animal.lion(),
+    petName: faker.animal.petName(),
+    rabbit: faker.animal.rabbit(),
+    rodent: faker.animal.rodent(),
+    snake: faker.animal.snake(),
+    type: faker.animal.type(),
+  }));
+}
+
 export function timestamp(_length: number = 1) {
   return Array.from({ length: _length }).map(() => ({
     id: faker.string.uuid(),

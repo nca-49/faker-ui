@@ -2,10 +2,10 @@
 "use client";
 
 import { getData } from "@/lib/fakerFetch";
-import { useState, useRef } from "react";
-// import { Label } from "../ui/label";
+import { useState, useRef, useEffect } from "react";
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
+import { ButtonLabel, ButtonVariant, InputType } from "@/lib/enums/constant";
 
 export function AppCard({
   _dataClass,
@@ -17,6 +17,11 @@ export function AppCard({
   const [data, setData] = useState<any>(null);
   const [copiedKey, setCopiedKey] = useState<string | null>(null);
   const inputRef = useRef<{ [key: string]: HTMLInputElement | null }>({});
+
+  useEffect(() => {
+    fetchRandomData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const fetchRandomData = async () => {
     const randomItem = await getData(_dataClass, _length);
@@ -33,8 +38,6 @@ export function AppCard({
       },
       {}
     );
-
-    console.log(result);
     setData(result);
   };
 
@@ -64,7 +67,7 @@ export function AppCard({
     });
   };
   return (
-    <div className="elementor flex w-full items-center space-x-2 mb-4">
+    <div className="w-full">
       {data &&
         Object.keys(data).map((key) => (
           <div key={key}>
@@ -75,7 +78,7 @@ export function AppCard({
                 <div key={index} className="mb-2">
                   <label>{`${key} ${index + 1}`}</label>
                   <Input
-                    type="text"
+                    type={InputType.TEXT}
                     ref={(el) => (inputRef.current[refKey] = el)}
                     value={value}
                     onChange={(e) => handleChange(key, index, e.target.value)}
@@ -83,10 +86,14 @@ export function AppCard({
                   <Button
                     onClick={() => copyToClipboard(key, index)}
                     variant={
-                      copiedKey === `${key}-${index}` ? "default" : "outline"
+                      copiedKey === `${key}-${index}`
+                        ? ButtonVariant.DEFAULT
+                        : ButtonVariant.OUTLINE
                     }
                   >
-                    {copiedKey === `${key}-${index}` ? "Copied!" : "Copy"}
+                    {copiedKey === `${key}-${index}`
+                      ? ButtonLabel.COPIED
+                      : ButtonLabel.COPY}
                   </Button>
                 </div>
               );
@@ -94,7 +101,7 @@ export function AppCard({
           </div>
         ))}
       <Button variant="ghost" onClick={fetchRandomData}>
-        Regenerate
+        {ButtonLabel.GENERATE}
       </Button>
     </div>
   );
